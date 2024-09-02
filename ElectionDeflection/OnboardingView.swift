@@ -152,7 +152,7 @@ struct InitialIconView: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
 
-                    if let url = URL(string: "https://your-repo-link-here.com") {
+                    if let url = URL(string: "https://github.com/MillerMedia/ElectionDeflection") {
                         Link(destination: url) {
                             HStack {
                                 Image(systemName: "chevron.left.slash.chevron.right") // SF Symbol for "code" or custom GitHub logo
