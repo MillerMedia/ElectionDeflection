@@ -42,18 +42,26 @@ struct OnboardingView: View {
                 )
                 .tag(4)
 
+                // NEW Step: Explain Filtering Behavior
+                StepView(
+                    title: "How It Works",
+                    description: "Once enabled, ElectionDeflection will filter political messages into the newly created 'Junk' folder. Don't worry, any political messages from your contacts won't be filtered.",
+                    imageName: "junk_folder_screenshot"
+                )
+                .tag(5)
+
                 // Final Screen - All Set!
                 StepView(
                     title: "You're All Set!",
                     description: "ElectionDeflection will now filter unwanted political messages for you. If you need to revisit any instructions, you can swipe back through the steps.",
                     imageName: nil
                 )
-                .tag(5)
+                .tag(6)
             }
             .tabViewStyle(PageTabViewStyle())
             .background(Color(hex: "#304789").edgesIgnoringSafeArea(.all)) // Background color for the TabView
 
-            if currentPage < 5 {
+            if currentPage < 6 {
                 Button(action: {
                     withAnimation {
                         currentPage += 1

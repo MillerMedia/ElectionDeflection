@@ -14,9 +14,6 @@
 		A51F8DC02C85142500E93584 /* MessageFilterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DBF2C85142500E93584 /* MessageFilterExtension.swift */; };
 		A51F8DC42C85142500E93584 /* ElectionDeflectionFilter.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A51F8DBD2C85142500E93584 /* ElectionDeflectionFilter.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A51F8DCA2C85195B00E93584 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DC92C85195B00E93584 /* OnboardingView.swift */; };
-		A51F8DE82C853AA100E93584 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DE72C853AA100E93584 /* CoreDataStack.swift */; };
-		A51F8DEA2C853AB300E93584 /* ItemDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DE92C853AB300E93584 /* ItemDAO.swift */; };
-		A51F8DED2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DEB2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +51,6 @@
 		A51F8DBF2C85142500E93584 /* MessageFilterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFilterExtension.swift; sourceTree = "<group>"; };
 		A51F8DC12C85142500E93584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51F8DC92C85195B00E93584 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		A51F8DE72C853AA100E93584 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		A51F8DE92C853AB300E93584 /* ItemDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDAO.swift; sourceTree = "<group>"; };
-		A51F8DEC2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ElectionDeflectionModel.xcdatamodel; sourceTree = "<group>"; };
 		A51F8DF22C853DC600E93584 /* ElectionDeflectionFilter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElectionDeflectionFilter.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,9 +116,6 @@
 			children = (
 				A51F8DF22C853DC600E93584 /* ElectionDeflectionFilter.entitlements */,
 				A51F8DBF2C85142500E93584 /* MessageFilterExtension.swift */,
-				A51F8DEB2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodeld */,
-				A51F8DE72C853AA100E93584 /* CoreDataStack.swift */,
-				A51F8DE92C853AB300E93584 /* ItemDAO.swift */,
 				A51F8DC12C85142500E93584 /* Info.plist */,
 			);
 			path = ElectionDeflectionFilter;
@@ -240,10 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A51F8DEA2C853AB300E93584 /* ItemDAO.swift in Sources */,
-				A51F8DED2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodeld in Sources */,
 				A51F8DC02C85142500E93584 /* MessageFilterExtension.swift in Sources */,
-				A51F8DE82C853AA100E93584 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,20 +532,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A51F8DEB2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A51F8DEC2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodel */,
-			);
-			currentVersion = A51F8DEC2C853AE000E93584 /* ElectionDeflectionModel.xcdatamodel */;
-			name = ElectionDeflectionModel.xcdatamodeld;
-			path = /Users/mattmiller/Sites/ElectionDeflection/ElectionDeflectionFilter/ElectionDeflectionModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A51F8D9F2C8513A400E93584 /* Project object */;
 }

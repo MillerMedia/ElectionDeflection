@@ -1,27 +1,13 @@
 import IdentityLookup
-import CoreData
 
-// Assuming EDItem is a Core Data entity with an attribute 'editem'
+// Simplified Message Filter Extension without Core Data
 final class MessageFilterExtension: ILMessageFilterExtension {
-    var keywords: [String] = []
-    let coreDataStack = CoreDataStack()
-    
+    // List of keywords to filter
+    var keywords: [String] = ["trump", "vance", "harris", "walz", "election", "vote", "campaign", "giuliani", "kamala", "democrat", "republican", "senate"]
+
     override init() {
         super.init()
         print("MessageFilterExtension initialized") // Add this print statement
-        loadKeywords()
-    }
-
-    func loadKeywords() {
-        let context = coreDataStack.persistentContainer.viewContext
-        let itemDAO = ItemDAO(managedObjectContext: context)
-        let allItems = itemDAO.fetchItems()
-
-        // Debug: Check how many items are fetched
-        print("Loaded \(allItems.count) items from Core Data")
-
-        // Debug: Print all keywords being loaded
-        self.keywords = allItems.compactMap { $0.editem?.lowercased() }
         print("Loaded keywords: \(self.keywords)")
     }
 
@@ -32,7 +18,7 @@ final class MessageFilterExtension: ILMessageFilterExtension {
         for keyword in keywords {
             if messageBody.contains(keyword) {
                 print("Keyword matched: \(keyword), categorizing as Promotion")
-                return .promotion // Categorize the message as Promotion
+                return .junk // Categorize the message as Promotion
             }
         }
         print("No keywords matched, allowing the message")
