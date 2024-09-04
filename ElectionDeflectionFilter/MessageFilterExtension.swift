@@ -3,7 +3,7 @@ import IdentityLookup
 // Simplified Message Filter Extension without Core Data
 final class MessageFilterExtension: ILMessageFilterExtension {
     // List of keywords to filter
-    var keywords: [String] = ["trump", "vance", "harris", "walz", "election", "vote", "campaign", "giuliani", "kamala", "democrat", "republican", "senate", "cruz", "congress", "impeach", "ballot", "radical left", "far right"]
+    var keywords: [String] = ["trump", "vance", "harris", "walz", "election", "vote", "campaign", "giuliani", "kamala", "democrat", "republican", "senate", "cruz", "congress", "impeach", "ballot", "radical left", "far right", "cmp.lk/", "jim jordan"]
 
     override init() {
         super.init()
