@@ -52,11 +52,14 @@ struct OnboardingView: View {
 
                 // Final Screen - All Set!
                 StepView(
-                    title: "You're All Set!",
-                    description: "ElectionDeflection will now filter unwanted political messages for you. If you need to revisit any instructions, you can swipe back through the steps.",
+                    title: "Almost Done!",
+                    description: """
+                    Just one more step! Make sure to enable ElectionDeflection in your iPhone's settings to start filtering unwanted political messages. If any political texts slip through, please screenshot them and send them to me on IG (@mattmiller.ai) or X (@mattmiller_ai). If you need to revisit any instructions, you can swipe back through the steps.
+                    """,
                     imageName: nil
                 )
                 .tag(6)
+
             }
             .tabViewStyle(PageTabViewStyle())
             .background(Color(hex: "#304789").edgesIgnoringSafeArea(.all)) // Background color for the TabView
