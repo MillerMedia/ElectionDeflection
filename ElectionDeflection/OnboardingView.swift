@@ -5,66 +5,62 @@ struct OnboardingView: View {
 
     var body: some View {
         VStack(spacing: 0) {
+            // The TabView for the onboarding screens
             TabView(selection: $currentPage) {
-                // Initial Screen - App Icon with Background Color and Introductory Text
-                InitialIconView()
-                    .tag(0)
-
-                // Step 1: Open Settings
+                InitialIconView().tag(0)
+                
                 StepView(
                     title: "Step 1: Open Settings",
                     description: "Open the Settings app on your iPhone. You can do this by tapping the Settings icon on your home screen or by clicking the 'Go to Settings' button at the end of this guide.",
-                    imageName: "settings_icon_pdf"
-                )
-                .tag(1)
+                    imageName: "settings_icon_pdf",
+                    extraPadding: false
+                ).tag(1)
 
-                // Step 2: Go to Messages
                 StepView(
                     title: "Step 2: Go to Messages Settings",
                     description: "Scroll down and tap on 'Messages'.",
-                    imageName: "messages_screenshot"
-                )
-                .tag(2)
+                    imageName: "messages_screenshot",
+                    extraPadding: false
+                ).tag(2)
 
-                // Step 3A: Open Unknown & Spam
                 StepView(
                     title: "Step 3: Open Unknown & Spam",
                     description: "Tap on 'Unknown & Spam' in the Messages settings.",
-                    imageName: "unknown_spam_screenshot"
-                )
-                .tag(3)
+                    imageName: "unknown_spam_screenshot",
+                    extraPadding: false
+                ).tag(3)
 
-                // Step 3B: Enable SMS Filtering
                 StepView(
                     title: "Step 4: Enable SMS Filtering",
                     description: "Select 'ElectionDeflection' under SMS Filtering.",
-                    imageName: "sms_filtering_screenshot"
-                )
-                .tag(4)
+                    imageName: "sms_filtering_screenshot",
+                    extraPadding: false
+                ).tag(4)
 
-                // NEW Step: Explain Filtering Behavior
                 StepView(
                     title: "How It Works",
                     description: "Once enabled, ElectionDeflection will filter political messages into the newly created 'Junk' folder. Don't worry, any political messages from your contacts won't be filtered.",
-                    imageName: "junk_folder_screenshot"
-                )
-                .tag(5)
+                    imageName: "junk_folder_screenshot",
+                    extraPadding: false
+                ).tag(5)
 
-                // Final Screen - All Set!
                 StepView(
                     title: "Almost Done!",
                     description: """
                     Just one more step! Make sure to enable ElectionDeflection in your iPhone's settings to start filtering unwanted political messages. If any political texts slip through, please screenshot them and send them to me on IG (@mattmiller.ai) or X (@mattmiller_ai). If you need to revisit any instructions, you can swipe back through the steps.
-                    """,
-                    imageName: nil
-                )
-                .tag(6)
 
+                    If ElectionDeflection has been helpful, I would really appreciate a 5-star rating on the App Store, it helps get the word out to others! You can do so by tapping the button below:
+                    """,
+                    imageName: nil,
+                    extraPadding: true
+                ).tag(6)
             }
             .tabViewStyle(PageTabViewStyle())
             .background(Color(hex: "#304789").edgesIgnoringSafeArea(.all)) // Background color for the TabView
 
+            // Bottom Navigation Buttons
             if currentPage < 6 {
+                // Next button for all but the final slide
                 Button(action: {
                     withAnimation {
                         currentPage += 1
@@ -88,32 +84,102 @@ struct OnboardingView: View {
                 .padding(.bottom, 40)  // Add more padding at the bottom for more space
                 .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
             } else {
-                Button(action: {
-                    // Open the Settings app to the app's settings page
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url)
+                // Fade in the final buttons
+                VStack {
+                    // Go to Settings button
+                    Button(action: {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        Text("Go to Settings")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                LinearGradient(gradient: Gradient(colors: [Color.green, Color.teal]),
+                                               startPoint: .leading,
+                                               endPoint: .trailing) // Custom button color gradient
+                            )
+                            .cornerRadius(12)
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                     }
-                }) {
-                    Text("Go to Settings")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [Color.green, Color.teal]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing) // Custom button color gradient
-                        )
-                        .cornerRadius(12)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
+
+                    // Rate Us button
+                    Button(action: {
+                        if let url = URL(string: "https://apps.apple.com/us/app/electiondeflection/id6670375536?action=write-review") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        Text("Rate Us 5 Stars")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.orange]),
+                                               startPoint: .leading,
+                                               endPoint: .trailing)
+                            )
+                            .cornerRadius(12)
+                            .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 40)  // Add more padding at the bottom for more space
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-                .padding(.bottom, 40)  // Add more padding at the bottom for more space
                 .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
+                .transition(.opacity) // Apply fade transition
+                .animation(.easeInOut(duration: 0.5), value: currentPage) // Animate when the page changes
             }
         }
         .edgesIgnoringSafeArea(.all)  // Ensure this covers the entire screen
+    }
+}
+
+// Step View for Each Onboarding Step
+struct StepView: View {
+    let title: String
+    let description: String
+    let imageName: String?
+    let extraPadding: Bool // Added extraPadding as an argument
+
+    var body: some View {
+        GeometryReader { geometry in
+            VStack(spacing: 20) {
+                // Conditional padding for the title
+                Text(title)
+                    .font(.system(size: 34, weight: .bold, design: .rounded))  // Custom system font
+                    .foregroundColor(.white) // Set text color to white
+                    .multilineTextAlignment(.center)
+                    .padding(.top, extraPadding ? 60 : 20) // Apply extra padding on the last slide
+
+                Text(description)
+                    .font(.body)
+                    .foregroundColor(.white) // Set text color to white
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+
+                Spacer(minLength: 20)
+
+                if let imageName = imageName {
+                    Image(imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(
+                            maxWidth: geometry.size.width * 1, // 100% of the screen width
+                            maxHeight: geometry.size.height * 0.6 // 40% of the screen height
+                        )
+                        .padding(.top, 20)
+                }
+
+                Spacer()
+            }
+            .padding()
+        }
     }
 }
 
@@ -178,48 +244,6 @@ struct InitialIconView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure VStack fills the entire ZStack
-        }
-    }
-}
-
-// Step View for Each Onboarding Step
-struct StepView: View {
-    let title: String
-    let description: String
-    let imageName: String?
-
-    var body: some View {
-        GeometryReader { geometry in
-            VStack(spacing: 20) {
-                Text(title)
-                    .font(.system(size: 34, weight: .bold, design: .rounded))  // Custom system font
-                    .foregroundColor(.white) // Set text color to white
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 20)
-
-                // Align description text directly below the title
-                Text(description)
-                    .font(.body)
-                    .foregroundColor(.white) // Set text color to white
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-
-                Spacer(minLength: 20) // Spacer to ensure consistent spacing
-
-                if let imageName = imageName {
-                    Image(imageName)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(
-                            maxWidth: geometry.size.width * 1, // 100% of the screen width
-                            maxHeight: geometry.size.height * 0.6 // 40% of the screen height
-                        )
-                        .padding(.top, 20)
-                }
-
-                Spacer() // Bottom spacer to push everything upwards consistently
-            }
-            .padding()
         }
     }
 }
