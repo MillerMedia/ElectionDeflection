@@ -157,7 +157,7 @@ struct InitialIconView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150)
-                    .padding(.top, 60)
+                    .padding(.top, 40)
 
                 // Introductory Text
                 VStack(spacing: 20) {
@@ -167,18 +167,23 @@ struct InitialIconView: View {
                         .foregroundColor(.white) // Set text color to white
                         .multilineTextAlignment(.center)
                         .padding(.top, 0)
+                        .minimumScaleFactor(0.5)
 
-                    Text("ElectionDeflection helps you filter out unwanted political messages by utilizing the SMS filtering feature on your iPhone.")
+                    Text("ElectionDeflection filters out political spam texts by using your phone's SMS filtering feature.")
                         .font(.body)
                         .foregroundColor(.white) // Set text color to white
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
+                        .lineLimit(nil) // Allow wrapping
+                        .minimumScaleFactor(0.75) // Scale down text if necessary
 
-                    Text("Your privacy is important to us. We do not save or transmit any of your data. You can review the full source code at the link below.")
+                    Text("Your privacy is important to us. We do not save or transmit any of your data. You can review the full source code below.")
                         .font(.body)
                         .foregroundColor(.white) // Set text color to white
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
+                        .lineLimit(nil) // Allow wrapping
+                        .minimumScaleFactor(0.65) // Scale down text if necessary
 
                     if let url = URL(string: "https://github.com/MillerMedia/ElectionDeflection") {
                         Link(destination: url) {
@@ -229,7 +234,7 @@ struct StepView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
 
-                Spacer(minLength: 20) // Spacer to ensure consistent spacing
+                Spacer(minLength: 10) // Spacer to ensure consistent spacing
 
                 if let imageName = imageName {
                     Image(imageName)
@@ -239,7 +244,7 @@ struct StepView: View {
                             maxWidth: geometry.size.width * 1, // 100% of the screen width
                             maxHeight: geometry.size.height * 0.6 // 40% of the screen height
                         )
-                        .padding(.top, 20)
+                        .padding(.top, 10)
                 }
 
                 Spacer() // Bottom spacer to push everything upwards consistently
