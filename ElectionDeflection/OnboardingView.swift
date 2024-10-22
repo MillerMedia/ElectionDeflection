@@ -2,45 +2,68 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var currentPage = 0
-
+    
     var body: some View {
+        // Define base index for tags
+        let baseStepIndex = 1
+        let stepCount = 6
+        
+        // Calculate iOS 18 adjustment inside the body
+        let iOS18Adjustment: Int = {
+            if #available(iOS 18.0, *) {
+                return 1
+            } else {
+                return 0
+            }
+        }()
+        
         VStack(spacing: 0) {
             TabView(selection: $currentPage) {
                 // Initial Screen - App Icon with Background Color and Introductory Text
                 InitialIconView()
                     .tag(0)
-
+                
                 // Step 1: Open Settings
                 StepView(
                     title: "Step 1: Open Settings",
-                    description: "Open the Settings app on your iPhone. You can do this by tapping the Settings icon on your home screen or by clicking the 'Go to Settings' button at the end of this guide.",
+                    description: "Open the Settings app on your iPhone. You can do this by tapping the Settings icon on your home screen.",
                     imageName: "settings_icon_pdf"
                 )
-                .tag(1)
+                .tag(baseStepIndex)
+                
+                // Step 2 (for iOS 18+): Go to Apps
+                if #available(iOS 18.0, *) {
+                    StepView(
+                        title: "Step 2: Go to Apps",
+                        description: "Scroll down and tap on 'Apps'.",
+                        imageName: "ios18_settings"
+                    )
+                    .tag(baseStepIndex + 1)
+                }
 
-                // Step 2: Go to Messages
+                // Step 2: Go to Messages (iOS <18) / Step 3 (iOS 18+)
                 StepView(
-                    title: "Step 2: Go to Messages Settings",
+                    title: iOS18Adjustment == 1 ? "Step 3: Go to Messages" : "Step 2: Go to Messages Settings",
                     description: "Scroll down and tap on 'Messages'.",
-                    imageName: "messages_screenshot"
+                    imageName: iOS18Adjustment == 1 ? "ios18_apps" : "messages_screenshot"
                 )
-                .tag(2)
+                .tag(baseStepIndex + 1 + iOS18Adjustment)
 
                 // Step 3A: Open Unknown & Spam
                 StepView(
-                    title: "Step 3: Open Unknown & Spam",
+                    title: "Step \(baseStepIndex + 2 + iOS18Adjustment): Open Unknown & Spam",
                     description: "Tap on 'Unknown & Spam' in the Messages settings.",
                     imageName: "unknown_spam_screenshot"
                 )
-                .tag(3)
+                .tag(baseStepIndex + 2 + iOS18Adjustment)
 
                 // Step 3B: Enable SMS Filtering
                 StepView(
-                    title: "Step 4: Enable SMS Filtering",
+                    title: "Step \(baseStepIndex + 3 + iOS18Adjustment): Enable SMS Filtering",
                     description: "Select 'ElectionDeflection' under SMS Filtering.",
                     imageName: "sms_filtering_screenshot"
                 )
-                .tag(4)
+                .tag(baseStepIndex + 3 + iOS18Adjustment)
 
                 // NEW Step: Explain Filtering Behavior
                 StepView(
@@ -48,23 +71,23 @@ struct OnboardingView: View {
                     description: "Once enabled, ElectionDeflection will filter political messages into the newly created 'Junk' folder. Don't worry, any political messages from your contacts won't be filtered.",
                     imageName: "junk_folder_screenshot"
                 )
-                .tag(5)
+                .tag(baseStepIndex + 4 + iOS18Adjustment)
 
                 // Final Screen - All Set!
                 StepView(
                     title: "Almost Done!",
                     description: """
-                    Just one more step! Make sure to enable ElectionDeflection in your iPhone's settings to start filtering unwanted political messages. If any political texts slip through, please screenshot them and send them to me on IG (@mattmiller.ai) or X (@mattmiller_ai). If you need to revisit any instructions, you can swipe back through the steps.
+                    Just one more step! Make sure to leave this app, go to the Settings app and enable ElectionDeflection to start filtering unwanted political messages. If any political texts slip through, please screenshot them and send them to me on IG (@mattmiller.ai) or X (@mattmiller_ai). If you need to revisit any instructions, you can swipe back through the steps.
                     """,
                     imageName: nil
                 )
-                .tag(6)
-
+                .tag(baseStepIndex + 5 + iOS18Adjustment)
             }
             .tabViewStyle(PageTabViewStyle())
             .background(Color(hex: "#304789").edgesIgnoringSafeArea(.all)) // Background color for the TabView
 
-            if currentPage < 6 {
+            // Navigation Button
+            if currentPage < (stepCount + iOS18Adjustment) {
                 Button(action: {
                     withAnimation {
                         currentPage += 1
@@ -89,18 +112,18 @@ struct OnboardingView: View {
                 .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
             } else {
                 Button(action: {
-                    // Open the Settings app to the app's settings page
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url)
+                    // Send the user back to the first step to re-review instructions
+                    withAnimation {
+                        currentPage = 1
                     }
                 }) {
-                    Text("Go to Settings")
+                    Text("Back to Step 1")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(
-                            LinearGradient(gradient: Gradient(colors: [Color.green, Color.teal]),
+                            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]),
                                            startPoint: .leading,
                                            endPoint: .trailing) // Custom button color gradient
                         )
@@ -112,10 +135,12 @@ struct OnboardingView: View {
                 .padding(.bottom, 40)  // Add more padding at the bottom for more space
                 .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
             }
+
         }
         .edgesIgnoringSafeArea(.all)  // Ensure this covers the entire screen
     }
 }
+
 
 // Initial Screen with App Icon, Background Color, and Introductory Text
 struct InitialIconView: View {
