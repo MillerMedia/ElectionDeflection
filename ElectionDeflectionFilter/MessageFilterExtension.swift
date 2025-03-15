@@ -29,6 +29,9 @@ final class MessageFilterExtension: ILMessageFilterExtension {
         ],
         "ballot": [
             "ballot.trax"
+        ],
+        "reply stop": [
+            ".edu"
         ]
     ]
 
