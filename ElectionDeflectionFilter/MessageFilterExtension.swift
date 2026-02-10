@@ -123,18 +123,52 @@ final class MessageFilterExtension: ILMessageFilterExtension {
 }
 
 extension MessageFilterExtension: ILMessageFilterQueryHandling {
+    // iOS 16+ Capabilities Query - REQUIRED for iOS 16-26
+    // Without this, iOS 16+ may not call your extension at all!
+    // iOS 15 doesn't need this - the regular handle() method is sufficient
+    @available(iOS 16.0, *)
+    func handle(_ capabilitiesQueryRequest: ILMessageFilterCapabilitiesQueryRequest, context: ILMessageFilterExtensionContext, completion: @escaping (ILMessageFilterCapabilitiesQueryResponse) -> Void) {
+        let response = ILMessageFilterCapabilitiesQueryResponse()
+
+        // We don't use promotional sub-actions (we use .junk for spam)
+        // But declaring empty arrays tells iOS this extension is active
+        response.promotionalSubActions = []
+        response.transactionalSubActions = []
+
+        print("✅ iOS 16+ Capabilities query handled - Extension is ACTIVE")
+        completion(response)
+    }
+
+    // Message Filtering Query - Main filtering logic
     func handle(_ queryRequest: ILMessageFilterQueryRequest, context: ILMessageFilterExtensionContext, completion: @escaping (ILMessageFilterQueryResponse) -> Void) {
         let response = ILMessageFilterQueryResponse()
-        
+
         if let messageBody = queryRequest.messageBody {
             response.action = determineAction(for: messageBody)
         } else {
             print("No message body found.")
             response.action = .allow
         }
-        
-        print("Action taken: \(response.action == .allow ? "Allow" : "Promotion")")
-        
+
+        // Log which folder the message will go to
+        let actionDescription: String
+        switch response.action {
+        case .allow:
+            actionDescription = "Allow (goes to Messages inbox)"
+        case .junk:
+            actionDescription = "Junk (goes to Spam folder) ✓"
+        case .filter:
+            actionDescription = "Filter (goes to Unknown Senders)"
+        case .promotion:
+            actionDescription = "Promotion (goes to Promotions folder)"
+        case .transaction:
+            actionDescription = "Transaction (goes to Transactions folder)"
+        @unknown default:
+            actionDescription = "Unknown action"
+        }
+
+        print("🎯 Action: \(actionDescription)")
+
         completion(response)
     }
 }
