@@ -163,6 +163,8 @@ extension MessageFilterExtension: ILMessageFilterQueryHandling {
             actionDescription = "Promotion (goes to Promotions folder)"
         case .transaction:
             actionDescription = "Transaction (goes to Transactions folder)"
+        case .none:
+            actionDescription = "None"
         @unknown default:
             actionDescription = "Unknown action"
         }
