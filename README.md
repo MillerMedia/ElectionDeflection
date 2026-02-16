@@ -48,10 +48,12 @@ ElectionDeflection uses Apple's [ILMessageFilterExtension](https://developer.app
 1. Clone the repository
 2. Open `ElectionDeflection.xcodeproj` in Xcode
 3. Select your development team in Signing & Capabilities
-4. Update the App Group identifier if needed (`group.com.millermedia.electiondeflection`)
+4. Update `Shared/SharedConstants.swift` with your own identifiers:
+   - `appGroupIdentifier` — your App Group ID (must match Signing & Capabilities)
+   - `annualProductID` / `lifetimeProductID` — your IAP product IDs from App Store Connect
 5. Build and run on a device (message filtering requires a real device to test)
 
-**Note:** The SMS filter extension cannot be tested in the iOS Simulator. You need a physical device to test message filtering.
+**Note:** The SMS filter extension cannot be tested in the iOS Simulator. You need a physical device to test message filtering. In-App Purchases require your own product IDs configured in App Store Connect.
 
 ## Project Structure
 
