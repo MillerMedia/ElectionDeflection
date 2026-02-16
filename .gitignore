@@ -30,3 +30,15 @@ build/
 
 # Swift Package Manager
 .swiftpm/
+
+# Training data (contains real message content)
+TrainingData/
+
+# BMAD framework (dev tooling only)
+_bmad/
+_bmad-output/
+
+# Code signing
+*.p12
+*.mobileprovision
+*.cer

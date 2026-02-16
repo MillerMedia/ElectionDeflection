@@ -1,0 +1,68 @@
+{
+  "identifier" : "com.millermedia.ElectionDeflection.storekit",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : true,
+      "internalID" : "com.millermedia.ElectionDeflection.pro.lifetime",
+      "localizations" : [
+        {
+          "description" : "Unlock AI-powered political text filtering forever",
+          "displayName" : "ElectionDeflection Pro Lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.millermedia.ElectionDeflection.pro.lifetime",
+      "referenceName" : "Pro Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "",
+    "_developerTeamID" : "M966FGB957",
+    "_lastSynchronizedDate" : ""
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "ElectionDeflectionPro",
+      "localizations" : [
+
+      ],
+      "name" : "ElectionDeflection Pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "com.millermedia.ElectionDeflection.pro.annual",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Unlock AI-powered political text filtering with annual subscription",
+              "displayName" : "Pro Annual",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.millermedia.ElectionDeflection.pro.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Pro Annual",
+          "subscriptionGroupID" : "ElectionDeflectionPro",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

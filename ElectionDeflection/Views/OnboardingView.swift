@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    var onComplete: (() -> Void)? = nil
+    @Environment(\.dismiss) private var dismiss
     @State private var currentPage = 0
     
     var body: some View {
@@ -68,7 +70,7 @@ struct OnboardingView: View {
                 // NEW Step: Explain Filtering Behavior
                 StepView(
                     title: "How It Works",
-                    description: "Once enabled, ElectionDeflection will filter political messages into the newly created 'Junk' folder. Don't worry, any political messages from your contacts won't be filtered.",
+                    description: "Once enabled, ElectionDeflection will filter political messages into the Spam folder. Don't worry, any political messages from your contacts won't be filtered.",
                     imageName: "junk_folder_screenshot"
                 )
                 .tag(baseStepIndex + 4 + iOS18Adjustment)
@@ -84,16 +86,31 @@ struct OnboardingView: View {
                 .tag(baseStepIndex + 5 + iOS18Adjustment)
             }
             .tabViewStyle(PageTabViewStyle())
-            .background(Color(hex: "#304789").edgesIgnoringSafeArea(.all)) // Background color for the TabView
+            .background(Color.brandNavy.edgesIgnoringSafeArea(.all)) // Background color for the TabView
 
             // Navigation Button
-            if currentPage < (stepCount + iOS18Adjustment) {
+            VStack(spacing: 12) {
+                let isLastPage = currentPage >= (stepCount + iOS18Adjustment)
+
                 Button(action: {
-                    withAnimation {
-                        currentPage += 1
+                    if isLastPage {
+                        SharedDataManager.shared.hasCompletedOnboarding = true
+                        if SharedDataManager.shared.onboardingCompletedDate == nil {
+                            SharedDataManager.shared.onboardingCompletedDate = Date()
+                            UpgradeNotificationManager.scheduleUpgradeNotification()
+                        }
+                        if let onComplete = onComplete {
+                            onComplete()
+                        } else {
+                            dismiss()
+                        }
+                    } else {
+                        withAnimation {
+                            currentPage += 1
+                        }
                     }
                 }) {
-                    Text("Next")
+                    Text(isLastPage ? (onComplete != nil ? "Get Started" : "Done") : "Next")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -101,40 +118,30 @@ struct OnboardingView: View {
                         .background(
                             LinearGradient(gradient: Gradient(colors: [Color.orange, Color.red]),
                                            startPoint: .leading,
-                                           endPoint: .trailing) // Custom button color gradient
+                                           endPoint: .trailing)
                         )
                         .cornerRadius(12)
                         .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-                .padding(.bottom, 40)  // Add more padding at the bottom for more space
-                .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
-            } else {
+                .animation(.easeInOut(duration: 0.2), value: isLastPage)
+
                 Button(action: {
-                    // Send the user back to the first step to re-review instructions
                     withAnimation {
                         currentPage = 1
                     }
                 }) {
                     Text("Back to Step 1")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing) // Custom button color gradient
-                        )
-                        .cornerRadius(12)
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
+                        .font(.subheadline)
+                        .foregroundColor(.white.opacity(0.8))
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-                .padding(.bottom, 40)  // Add more padding at the bottom for more space
-                .background(Color(hex: "#304789").edgesIgnoringSafeArea(.bottom))  // Ensure background color covers the bottom
+                .opacity(isLastPage ? 1 : 0)
+                .animation(.easeInOut(duration: 0.2), value: isLastPage)
+                .allowsHitTesting(isLastPage)
             }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+            .padding(.bottom, 40)
+            .background(Color.brandNavy.edgesIgnoringSafeArea(.bottom))
 
         }
         .edgesIgnoringSafeArea(.all)  // Ensure this covers the entire screen
@@ -147,7 +154,7 @@ struct InitialIconView: View {
     var body: some View {
         ZStack {
             // Background Color
-            Color(hex: "#304789")
+            Color.brandNavy
                 .edgesIgnoringSafeArea(.all) // Ensure the color covers the entire screen
             
             VStack(spacing: 20) {
@@ -254,35 +261,11 @@ struct StepView: View {
     }
 }
 
-// Extension to use Hex colors in SwiftUI
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
-    }
-}
-
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView()
+            .previewDisplayName("Review Mode (Done)")
+        OnboardingView(onComplete: {})
+            .previewDisplayName("Initial Onboarding (Get Started)")
     }
 }
