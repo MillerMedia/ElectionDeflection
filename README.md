@@ -2,6 +2,10 @@
 
 A privacy-first iOS app that filters political text messages using on-device keyword matching and Core ML — with zero data collection.
 
+<a href="https://apps.apple.com/us/app/electiondeflection/id6670375536">
+  <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store" height="51">
+</a>
+
 ## Features
 
 **Free Tier — Keyword Filtering**
@@ -72,8 +76,7 @@ ElectionDeflectionTests/      # Unit tests
 
 ## App Store
 
-<!-- TODO: Add App Store link when published -->
-Coming soon to the App Store.
+[Download ElectionDeflection on the App Store](https://apps.apple.com/us/app/electiondeflection/id6670375536)
 
 ## License
 
