@@ -12,6 +12,14 @@ struct ElectionDeflectionApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    StoreKitService.shared.syncProTierFromKeychain()
+                    await StoreKitService.shared.loadProducts()
+                    await StoreKitService.shared.checkEntitlements()
+                }
+                .task {
+                    await StoreKitService.shared.listenForTransactionUpdates()
+                }
         }
     }
 }

@@ -1,0 +1,53 @@
+# Xcode
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+project.xcworkspace/xcuserdata/
+DerivedData/
+build/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# AI Tools
+.claude/
+.cursor/
+
+# Build artifacts
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.swiftpm/
+
+# Training data (JSON/model/txt files contain real message content)
+TrainingData/*.json
+TrainingData/*.mlmodel
+TrainingData/*.mlmodelc
+TrainingData/*.txt
+
+# BMAD framework (dev tooling only)
+_bmad/
+_bmad-output/
+
+# Wrangler (Cloudflare Workers local cache)
+.wrangler/
+
+# Node modules (Worker dependencies)
+node_modules/
+
+# Code signing
+*.p12
+*.mobileprovision
+*.cer
