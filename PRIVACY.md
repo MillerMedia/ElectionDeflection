@@ -4,11 +4,9 @@ ElectionDeflection is built on a simple principle: **your messages never leave y
 
 This document explains exactly how the app works, what data stays on your device, and how you can verify every claim yourself.
 
-## Zero Network Requests
+## All Filtering is 100% On-Device — Zero Network Requests
 
-ElectionDeflection makes **no network requests** during filtering operations. The message filter extension — the component that reads your incoming texts — contains zero networking code. No `URLSession`, no `URLRequest`, no HTTP calls of any kind.
-
-The **only** network activity in the entire app is Apple's StoreKit framework, which handles In-App Purchase pricing and transactions. This is managed entirely by Apple's system — ElectionDeflection does not operate its own servers, APIs, or backend services.
+ElectionDeflection makes **no network requests** during filtering operations. The message filter extension — the component that reads your incoming texts — contains zero networking code. No `URLSession`, no `URLRequest`, no HTTP calls of any kind. Your messages are never sent to any server.
 
 | App State | Network Activity |
 |-----------|-----------------|
@@ -18,6 +16,19 @@ The **only** network activity in the entire app is Apple's StoreKit framework, w
 | Settings | None |
 | Upgrade screen | Apple StoreKit (IAP pricing) |
 | Purchase flow | Apple StoreKit (transaction) |
+
+## Voluntary Text Submission (Opt-In Only)
+
+Separately from filtering, the app includes an optional feature that lets you contribute example political texts to help improve our AI training data. This is **completely user-initiated** — you must navigate to the submission screen, paste text, and tap Submit. No text is ever sent automatically, and no incoming messages are ever shared.
+
+When you submit text, only the text content is sent to our server (`electiondeflection.com`). No device IDs, user IDs, IP addresses, or metadata are stored with submissions. Phone numbers are automatically stripped before sending.
+
+| What is sent | What is NOT sent |
+|-------------|-----------------|
+| Text you manually paste and submit | Your incoming messages |
+| | Device ID, user ID, or any identifier |
+| | IP address (not stored) |
+| | App usage data or metadata |
 
 ## On-Device Processing
 
@@ -42,7 +53,7 @@ Filter Decision (.allow / .junk)
 iOS moves message to Inbox or Junk folder
 ```
 
-No message content is stored, logged, or transmitted at any point in this process.
+No message content is stored, logged, or transmitted at any point in the filtering process.
 
 ```mermaid
 flowchart TD
@@ -143,8 +154,9 @@ ElectionDeflection is open source. You can verify every claim in this document.
 | No networking in filter | `ElectionDeflectionFilter/MessageFilterExtension.swift` | Zero `URLSession`, `URLRequest`, or networking imports |
 | On-device ML | `ElectionDeflectionFilter/MessageFilterExtension.swift` | `MLModel(contentsOf:)` loading from bundle, no server fetch |
 | Local data only | `Shared/SharedDataManager.swift` | `UserDefaults(suiteName:)` with App Group, no network sync |
-| No API keys | `Shared/SharedConstants.swift` | Only local UserDefaults keys, no server URLs |
-| StoreKit only | `ElectionDeflection/Services/StoreKitService.swift` | Apple's StoreKit 2 API, no custom server calls |
+| No API keys in shared/filter code | `Shared/SharedConstants.swift` | Only local UserDefaults keys, no server URLs |
+| StoreKit for purchases | `ElectionDeflection/Services/StoreKitService.swift` | Apple's StoreKit 2 API for IAP |
+| Text submission is opt-in only | `ElectionDeflection/Services/TextSubmissionService.swift` | User-initiated POST, no auto-send, phone numbers stripped |
 
 ### Monitor Network Traffic
 
@@ -162,6 +174,7 @@ Use a network proxy to verify zero network requests during filtering:
 - Filtering active (receive messages): zero requests
 - Settings: zero requests
 - Upgrade screen: requests to `*.apple.com` only (Apple StoreKit)
+- Text submission (if you use it): single POST to `electiondeflection.com`
 
 ## Questions?
 

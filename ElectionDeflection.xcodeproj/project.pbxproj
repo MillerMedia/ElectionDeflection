@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2A0009900000001000B0020 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2A0009900000001000B0001 /* Secrets.plist */; };
 		A51F8DAB2C8513A500E93584 /* ElectionDeflectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */; };
 		A51F8DAD2C8513A500E93584 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAC2C8513A500E93584 /* ContentView.swift */; };
 		A51F8DAF2C8513A700E93584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51F8DAE2C8513A700E93584 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2A0009900000001000B0001 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		A51F8DA72C8513A500E93584 /* ElectionDeflection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectionDeflection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionDeflectionApp.swift; sourceTree = "<group>"; };
 		A51F8DAC2C8513A500E93584 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				A51F8DAE2C8513A700E93584 /* Assets.xcassets */,
 				A51F8DB02C8513A700E93584 /* ElectionDeflection.entitlements */,
 				B2A0000E00000001000B0001 /* Info.plist */,
+				B2A0009900000001000B0001 /* Secrets.plist */,
 				B2A0000C00000001000B0001 /* AppIcon-Pro@2x.png */,
 				B2A0000D00000001000B0001 /* AppIcon-Pro@3x.png */,
 				A51F8DB12C8513A700E93584 /* Preview Content */,
@@ -448,6 +451,7 @@
 				A51F8DAF2C8513A700E93584 /* Assets.xcassets in Resources */,
 				B2A0000C00000001000B0020 /* AppIcon-Pro@2x.png in Resources */,
 				B2A0000D00000001000B0020 /* AppIcon-Pro@3x.png in Resources */,
+				B2A0009900000001000B0020 /* Secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

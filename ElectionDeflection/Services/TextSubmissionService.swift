@@ -6,10 +6,19 @@ final class TextSubmissionService {
     static let shared = TextSubmissionService()
 
     private let endpointURL = URL(string: "https://electiondeflection.com/api/submit")!
-    private let apiKey = "ed-submit-v1-a7f3b9c2e1d4"
     private let minTextLength = 20
     private let maxTextLength = 2000
     private let session: URLSession
+
+    private var apiKey: String {
+        guard let url = Bundle.main.url(forResource: "Secrets", withExtension: "plist"),
+              let data = try? Data(contentsOf: url),
+              let dict = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
+              let key = dict["ED_SUBMIT_API_KEY"] as? String else {
+            return ""
+        }
+        return key
+    }
 
     private var userAgent: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
@@ -24,9 +33,15 @@ final class TextSubmissionService {
     func sanitize(_ text: String) -> String {
         var sanitized = text.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        // Strip phone numbers (US formats: 10-11 digits with optional separators)
-        let phonePattern = #"(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}"#
-        if let regex = try? NSRegularExpression(pattern: phonePattern) {
+        // Strip phone numbers (international and domestic formats)
+        let phonePatterns = [
+            // International: +<country code> followed by 6-14 digits with optional separators
+            #"\+\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{0,4}"#,
+            // NANP: US/Canada 10-11 digits with optional separators
+            #"(\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}"#,
+        ]
+        let combinedPattern = phonePatterns.joined(separator: "|")
+        if let regex = try? NSRegularExpression(pattern: combinedPattern) {
             sanitized = regex.stringByReplacingMatches(
                 in: sanitized,
                 range: NSRange(sanitized.startIndex..., in: sanitized),

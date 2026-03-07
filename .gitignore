@@ -41,6 +41,11 @@ TrainingData/*.txt
 _bmad/
 _bmad-output/
 
+# Environment / secrets
+.dev.vars
+Secrets.plist
+Secrets.xcconfig
+
 # Wrangler (Cloudflare Workers local cache)
 .wrangler/
 

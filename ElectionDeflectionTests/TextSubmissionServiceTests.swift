@@ -60,6 +60,27 @@ final class TextSubmissionServiceTests: XCTestCase {
         XCTAssertTrue(result.contains("[phone removed]"))
     }
 
+    func testSanitizeStripsUKPhoneNumber() {
+        let text = "Call +44 20 7946 0958 for campaign info"
+        let result = sut.sanitize(text)
+        XCTAssertFalse(result.contains("+44"), "UK phone number should be stripped")
+        XCTAssertTrue(result.contains("[phone removed]"))
+    }
+
+    func testSanitizeStripsGermanPhoneNumber() {
+        let text = "Ring +49 30 12345678 for details"
+        let result = sut.sanitize(text)
+        XCTAssertFalse(result.contains("+49"), "German phone number should be stripped")
+        XCTAssertTrue(result.contains("[phone removed]"))
+    }
+
+    func testSanitizeStripsAustralianPhoneNumber() {
+        let text = "Call +61 2 9876 5432 to register"
+        let result = sut.sanitize(text)
+        XCTAssertFalse(result.contains("+61"), "Australian phone number should be stripped")
+        XCTAssertTrue(result.contains("[phone removed]"))
+    }
+
     func testSanitizePreservesPoliticalContent() {
         let text = "URGENT: Vote YES on Proposition 42 to save democracy! Election Day is Nov 5."
         let result = sut.sanitize(text)
@@ -159,7 +180,7 @@ final class TextSubmissionServiceTests: XCTestCase {
         try await service.submitText("Vote YES on Proposition 42 to save democracy")
 
         let request = try XCTUnwrap(capturedRequest)
-        XCTAssertEqual(request.value(forHTTPHeaderField: "X-API-Key"), "ed-submit-v1-a7f3b9c2e1d4")
+        XCTAssertNotNil(request.value(forHTTPHeaderField: "X-API-Key"), "X-API-Key header should be present")
         let ua = try XCTUnwrap(request.value(forHTTPHeaderField: "User-Agent"))
         XCTAssertTrue(ua.hasPrefix("ElectionDeflection/"), "User-Agent should start with ElectionDeflection/, got: \(ua)")
     }
