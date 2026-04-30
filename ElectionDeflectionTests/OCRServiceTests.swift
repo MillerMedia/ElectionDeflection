@@ -125,10 +125,27 @@ final class OCRServiceTests: XCTestCase {
         let service = TextSubmissionService()
         let sanitized = service.sanitize(ocrOutput)
 
-        XCTAssertFalse(sanitized.contains("555-123-4567"), "Phone numbers should be stripped from OCR output")
-        XCTAssertFalse(sanitized.contains("(202) 555-0199"), "Phone numbers with parentheses should be stripped")
+        XCTAssertFalse(sanitized.contains("555-123-4567"), "Phone numbers should be anonymized from OCR output")
+        XCTAssertFalse(sanitized.contains("(202) 555-0199"), "Phone numbers with parentheses should be anonymized")
         XCTAssertTrue(sanitized.contains("Vote for Candidate X"), "Political content should be preserved")
-        XCTAssertTrue(sanitized.contains("[phone removed]"), "Phone placeholders should be inserted")
+        // Phone format should be preserved with randomized digits
+        XCTAssertTrue(sanitized.contains("-"), "Phone format (dashes) should be preserved")
+        XCTAssertTrue(sanitized.contains("("), "Phone format (parens) should be preserved")
+    }
+
+    func testOCROutputWithEmailAndURLSanitized() {
+        // OCR'd screenshots often contain email addresses and URLs with tracking params
+        let ocrOutput = "Support the campaign! Email volunteer@pac2024.com or visit https://donate.pac.com/give?ref=txt42&src=sms"
+        let service = TextSubmissionService()
+        let sanitized = service.sanitize(ocrOutput)
+
+        XCTAssertFalse(sanitized.contains("volunteer@pac2024.com"), "Email should be anonymized")
+        XCTAssertFalse(sanitized.contains("donate.pac.com"), "URL domain should be anonymized")
+        XCTAssertFalse(sanitized.contains("txt42"), "URL tracking param values should be randomized")
+        XCTAssertTrue(sanitized.contains("@"), "Email format preserved")
+        XCTAssertTrue(sanitized.contains("/give"), "URL path preserved")
+        XCTAssertTrue(sanitized.contains("ref="), "URL query key preserved")
+        XCTAssertTrue(sanitized.contains("Support the campaign"), "Political content preserved")
     }
 
     func testOCROutputWithExcessiveWhitespace() {
