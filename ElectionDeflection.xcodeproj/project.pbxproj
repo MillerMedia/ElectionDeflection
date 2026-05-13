@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B2A0009900000001000B0020 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2A0009900000001000B0001 /* Secrets.plist */; };
 		A51F8DAB2C8513A500E93584 /* ElectionDeflectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */; };
 		A51F8DAD2C8513A500E93584 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAC2C8513A500E93584 /* ContentView.swift */; };
 		A51F8DAF2C8513A700E93584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51F8DAE2C8513A700E93584 /* Assets.xcassets */; };
@@ -51,6 +50,7 @@
 		B2A0008200000001000B0028 /* OCRServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0007 /* OCRServiceTests.swift */; };
 		B2A0008200000001000B0029 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0004 /* OCRService.swift */; };
 		B2A0008200000001000B0030 /* ElectionDeflectionShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0001 /* ElectionDeflectionShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B2A0009900000001000B0020 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2A0009900000001000B0001 /* Secrets.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +93,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B2A0009900000001000B0001 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		A51F8DA72C8513A500E93584 /* ElectionDeflection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectionDeflection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionDeflectionApp.swift; sourceTree = "<group>"; };
 		A51F8DAC2C8513A500E93584 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		B2A0008200000001000B0005 /* ElectionDeflectionShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElectionDeflectionShare.entitlements; sourceTree = "<group>"; };
 		B2A0008200000001000B0006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2A0008200000001000B0007 /* OCRServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRServiceTests.swift; sourceTree = "<group>"; };
+		B2A0009900000001000B0001 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +296,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B2A0000600000001000B0010 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2A0000600000001000B0001 /* Color+Hex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B2A0008200000001000B0010 /* ElectionDeflectionShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,14 +314,6 @@
 				B2A0008200000001000B0006 /* Info.plist */,
 			);
 			path = ElectionDeflectionShare;
-			sourceTree = "<group>";
-		};
-		B2A0000600000001000B0010 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				B2A0000600000001000B0001 /* Color+Hex.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,12 +412,12 @@
 					A51F8DBC2C85142500E93584 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					B2A0008200000001000B0050 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 					B2A0000100000001000B0041 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = A51F8DA62C8513A500E93584;
+					};
+					B2A0008200000001000B0050 = {
+						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -693,9 +693,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflection/ElectionDeflection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ElectionDeflection/Preview Content\"";
+				DEVELOPMENT_TEAM = M966FGB957;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -718,7 +719,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -737,9 +738,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflection/ElectionDeflection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ElectionDeflection/Preview Content\"";
+				DEVELOPMENT_TEAM = M966FGB957;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -762,7 +764,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -779,7 +781,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionFilter/ElectionDeflectionFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionFilter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionFilter;
@@ -790,7 +792,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -808,7 +810,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionFilter/ElectionDeflectionFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionFilter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionFilter;
@@ -819,7 +821,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -880,7 +882,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionShare/ElectionDeflectionShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionShare;
@@ -891,7 +893,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -909,7 +911,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionShare/ElectionDeflectionShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionShare;
@@ -920,7 +922,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
