@@ -22,12 +22,16 @@ final class MessageFilterExtension: ILMessageFilterExtension {
 
     override init() {
         super.init()
-        // Seed default filter data into App Groups storage if not already present
-        SharedDataManager.shared.seedDefaultFilterDataIfNeeded()
-        // Cache filter data in memory for fast per-message access
-        self.keywords = SharedDataManager.shared.keywordList
-        self.whitelistContexts = SharedDataManager.shared.whitelistContexts
-        self.combinedTerms = SharedDataManager.shared.combinedTerms
+        // NOTE: seedDefaultFilterDataIfNeeded() writes are silently blocked by the
+        // ILMessageFilterExtension sandbox. Data is only seeded by the main app.
+        // Load from shared container, with DefaultFilterData as a hard fallback so the
+        // extension always has filter data even before the main app has been opened.
+        let loadedKeywords = SharedDataManager.shared.keywordList
+        self.keywords = loadedKeywords.isEmpty ? DefaultFilterData.keywords : loadedKeywords
+        let loadedWhitelist = SharedDataManager.shared.whitelistContexts
+        self.whitelistContexts = loadedWhitelist.isEmpty ? DefaultFilterData.whitelistContexts : loadedWhitelist
+        let loadedCombined = SharedDataManager.shared.combinedTerms
+        self.combinedTerms = loadedCombined.isEmpty ? DefaultFilterData.combinedTerms : loadedCombined
         filterLog("MessageFilterExtension initialized")
         filterLog("Loaded keywords: \(self.keywords.count) keywords")
         filterLog("Loaded whitelist contexts: \(self.whitelistContexts.count) contexts")
