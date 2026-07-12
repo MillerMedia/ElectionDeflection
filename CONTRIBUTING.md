@@ -20,7 +20,11 @@ Thanks for your interest in contributing to ElectionDeflection! This guide will 
 3. Update `Shared/SharedConstants.swift` with your own identifiers:
    - `appGroupIdentifier` — your App Group ID
    - `annualProductID` / `lifetimeProductID` — your IAP product IDs from App Store Connect
-4. Build and run on a physical device (message filtering requires a real device)
+4. Create `ElectionDeflection/Secrets.plist` from the template (the build expects it to exist; the placeholder value just disables text submissions):
+   ```
+   cp ElectionDeflection/Secrets.plist.example ElectionDeflection/Secrets.plist
+   ```
+5. Build and run on a physical device (message filtering requires a real device)
 
 The SMS filter extension cannot be tested in the iOS Simulator. You need a physical device to test message filtering.
 
@@ -28,11 +32,11 @@ The SMS filter extension cannot be tested in the iOS Simulator. You need a physi
 
 ### Bug Reports
 
-Found a bug? Please [open an issue](https://github.com/MillerMedia/ElectionDeflection/issues/new?template=bug_report.md) using the bug report template.
+Found a bug? Please [open an issue](https://github.com/mattmillerai/ElectionDeflection/issues/new?template=bug_report.md) using the bug report template.
 
 ### Feature Requests
 
-Have an idea? [Open a feature request](https://github.com/MillerMedia/ElectionDeflection/issues/new?template=feature_request.md) and describe your use case.
+Have an idea? [Open a feature request](https://github.com/mattmillerai/ElectionDeflection/issues/new?template=feature_request.md) and describe your use case.
 
 ### Pull Requests
 
@@ -96,4 +100,4 @@ By contributing, you agree that your contributions will be licensed under the [M
 
 ## Questions?
 
-Open an issue on [GitHub](https://github.com/MillerMedia/ElectionDeflection/issues) and we'll help you out.
+Open an issue on [GitHub](https://github.com/mattmillerai/ElectionDeflection/issues) and we'll help you out.

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2A0009900000001000B0020 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2A0009900000001000B0001 /* Secrets.plist */; };
 		A51F8DAB2C8513A500E93584 /* ElectionDeflectionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */; };
 		A51F8DAD2C8513A500E93584 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51F8DAC2C8513A500E93584 /* ContentView.swift */; };
 		A51F8DAF2C8513A700E93584 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51F8DAE2C8513A700E93584 /* Assets.xcassets */; };
@@ -39,6 +40,8 @@
 		B2A0001200000001000B0020 /* TextSubmissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0001200000001000B0001 /* TextSubmissionService.swift */; };
 		B2A0001300000001000B0020 /* TextSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0001300000001000B0001 /* TextSubmissionView.swift */; };
 		B2A0001400000001000B0021 /* TextSubmissionServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0001400000001000B0002 /* TextSubmissionServiceTests.swift */; };
+		B2A0001500000001000B0020 /* ReviewRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0001500000001000B0001 /* ReviewRequestManager.swift */; };
+		B2A0001600000001000B0021 /* ReviewRequestManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0001600000001000B0002 /* ReviewRequestManagerTests.swift */; };
 		B2A0008200000001000B0020 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0002 /* ShareViewController.swift */; };
 		B2A0008200000001000B0021 /* ShareExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0003 /* ShareExtensionView.swift */; };
 		B2A0008200000001000B0022 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0004 /* OCRService.swift */; };
@@ -50,7 +53,6 @@
 		B2A0008200000001000B0028 /* OCRServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0007 /* OCRServiceTests.swift */; };
 		B2A0008200000001000B0029 /* OCRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0004 /* OCRService.swift */; };
 		B2A0008200000001000B0030 /* ElectionDeflectionShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2A0008200000001000B0001 /* ElectionDeflectionShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B2A0009900000001000B0020 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B2A0009900000001000B0001 /* Secrets.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2A0009900000001000B0001 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		A51F8DA72C8513A500E93584 /* ElectionDeflection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ElectionDeflection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51F8DAA2C8513A500E93584 /* ElectionDeflectionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectionDeflectionApp.swift; sourceTree = "<group>"; };
 		A51F8DAC2C8513A500E93584 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 		B2A0001200000001000B0001 /* TextSubmissionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSubmissionService.swift; sourceTree = "<group>"; };
 		B2A0001300000001000B0001 /* TextSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSubmissionView.swift; sourceTree = "<group>"; };
 		B2A0001400000001000B0002 /* TextSubmissionServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSubmissionServiceTests.swift; sourceTree = "<group>"; };
+		B2A0001500000001000B0001 /* ReviewRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestManager.swift; sourceTree = "<group>"; };
+		B2A0001600000001000B0002 /* ReviewRequestManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequestManagerTests.swift; sourceTree = "<group>"; };
 		B2A0008200000001000B0001 /* ElectionDeflectionShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ElectionDeflectionShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A0008200000001000B0002 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		B2A0008200000001000B0003 /* ShareExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareExtensionView.swift; sourceTree = "<group>"; };
@@ -135,7 +140,6 @@
 		B2A0008200000001000B0005 /* ElectionDeflectionShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ElectionDeflectionShare.entitlements; sourceTree = "<group>"; };
 		B2A0008200000001000B0006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2A0008200000001000B0007 /* OCRServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRServiceTests.swift; sourceTree = "<group>"; };
-		B2A0009900000001000B0001 /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +265,7 @@
 				B2A0001000000001000B0001 /* KeychainService.swift */,
 				B2A0001200000001000B0001 /* TextSubmissionService.swift */,
 				B2A0000F00000001000B0001 /* UpgradeNotificationManager.swift */,
+				B2A0001500000001000B0001 /* ReviewRequestManager.swift */,
 				B2A0000800000001000B0001 /* StoreKitService.swift */,
 			);
 			path = Services;
@@ -283,6 +288,7 @@
 				B2A0000200000001000B0002 /* MessageFilterExtensionTests.swift */,
 				B2A0000800000001000B0002 /* StoreKitServiceTests.swift */,
 				B2A0001400000001000B0002 /* TextSubmissionServiceTests.swift */,
+				B2A0001600000001000B0002 /* ReviewRequestManagerTests.swift */,
 				B2A0008200000001000B0007 /* OCRServiceTests.swift */,
 			);
 			path = ElectionDeflectionTests;
@@ -296,14 +302,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B2A0000600000001000B0010 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				B2A0000600000001000B0001 /* Color+Hex.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		B2A0008200000001000B0010 /* ElectionDeflectionShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +312,14 @@
 				B2A0008200000001000B0006 /* Info.plist */,
 			);
 			path = ElectionDeflectionShare;
+			sourceTree = "<group>";
+		};
+		B2A0000600000001000B0010 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2A0000600000001000B0001 /* Color+Hex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,12 +418,12 @@
 					A51F8DBC2C85142500E93584 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					B2A0008200000001000B0050 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					B2A0000100000001000B0041 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = A51F8DA62C8513A500E93584;
-					};
-					B2A0008200000001000B0050 = {
-						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
@@ -501,6 +507,7 @@
 				B2A0001100000001000B0020 /* WelcomeV2View.swift in Sources */,
 				B2A0001200000001000B0020 /* TextSubmissionService.swift in Sources */,
 				B2A0001300000001000B0020 /* TextSubmissionView.swift in Sources */,
+				B2A0001500000001000B0020 /* ReviewRequestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +530,7 @@
 				B2A0000200000001000B0001 /* MessageFilterExtensionTests.swift in Sources */,
 				B2A0000800000001000B0021 /* StoreKitServiceTests.swift in Sources */,
 				B2A0001400000001000B0021 /* TextSubmissionServiceTests.swift in Sources */,
+				B2A0001600000001000B0021 /* ReviewRequestManagerTests.swift in Sources */,
 				B2A0008200000001000B0028 /* OCRServiceTests.swift in Sources */,
 				B2A0008200000001000B0029 /* OCRService.swift in Sources */,
 			);
@@ -693,10 +701,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflection/ElectionDeflection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ElectionDeflection/Preview Content\"";
-				DEVELOPMENT_TEAM = M966FGB957;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -719,7 +726,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -738,10 +745,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflection/ElectionDeflection.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"ElectionDeflection/Preview Content\"";
-				DEVELOPMENT_TEAM = M966FGB957;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -764,7 +770,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -781,7 +787,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionFilter/ElectionDeflectionFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionFilter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionFilter;
@@ -792,7 +798,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -810,7 +816,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionFilter/ElectionDeflectionFilter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionFilter/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionFilter;
@@ -821,7 +827,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionFilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -882,7 +888,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionShare/ElectionDeflectionShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionShare;
@@ -893,7 +899,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -911,7 +917,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ElectionDeflectionShare/ElectionDeflectionShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 37;
+				CURRENT_PROJECT_VERSION = 36;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ElectionDeflectionShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ElectionDeflectionShare;
@@ -922,7 +928,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.millermedia.ElectionDeflection.ElectionDeflectionShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;

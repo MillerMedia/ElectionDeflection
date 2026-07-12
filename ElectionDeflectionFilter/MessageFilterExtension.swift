@@ -23,9 +23,12 @@ final class MessageFilterExtension: ILMessageFilterExtension {
     override init() {
         super.init()
         // NOTE: seedDefaultFilterDataIfNeeded() writes are silently blocked by the
-        // ILMessageFilterExtension sandbox. Data is only seeded by the main app.
-        // Load from shared container, with DefaultFilterData as a hard fallback so the
-        // extension always has filter data even before the main app has been opened.
+        // ILMessageFilterExtension sandbox — data is only seeded by the main app. So
+        // load from the shared container, but fall back to DefaultFilterData whenever a
+        // list comes back empty (i.e. before the main app has ever been opened), so the
+        // extension always filters instead of allowing everything through.
+        SharedDataManager.shared.seedDefaultFilterDataIfNeeded()
+        // Cache filter data in memory for fast per-message access
         let loadedKeywords = SharedDataManager.shared.keywordList
         self.keywords = loadedKeywords.isEmpty ? DefaultFilterData.keywords : loadedKeywords
         let loadedWhitelist = SharedDataManager.shared.whitelistContexts

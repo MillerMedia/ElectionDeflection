@@ -29,6 +29,19 @@ enum SharedConstants {
     static let upgradePromptDelayDays = 3
     static let upgradeNotificationID = "contextual-upgrade-prompt"
 
+    // MARK: - Review Request (main app only)
+
+    static let appLaunchCountKey = "appLaunchCount"
+    static let firstLaunchDateKey = "firstLaunchDate"
+    static let lastReviewRequestDateKey = "lastReviewRequestDate"
+    static let proPurchaseDateKey = "proPurchaseDate"
+    static let lastActiveeDateKey = "lastActiveDate"
+    static let reviewRequestMinLaunches = 5
+    static let reviewRequestMinDaysSinceInstall = 7
+    static let reviewRequestMinDaysSincePurchase = 3
+    static let reviewRequestInactivityDays = 14
+    static let reviewRequestCooldownDays = 120  // ~3 per year max
+
     // MARK: - IAP Product IDs
 
     static let proAnnualProductID = "com.millermedia.ElectionDeflection.pro.annual"

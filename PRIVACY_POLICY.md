@@ -62,10 +62,10 @@ If we update this privacy policy, we will update the "Last Updated" date above. 
 
 ElectionDeflection is open source. You can verify every privacy claim by:
 
-- Inspecting the [source code on GitHub](https://github.com/MillerMedia/ElectionDeflection)
-- Reading our [Privacy Architecture documentation](https://github.com/MillerMedia/ElectionDeflection/blob/main/PRIVACY.md)
+- Inspecting the [source code on GitHub](https://github.com/mattmillerai/ElectionDeflection)
+- Reading our [Privacy Architecture documentation](https://github.com/mattmillerai/ElectionDeflection/blob/main/PRIVACY.md)
 - Monitoring network traffic with Charles Proxy or mitmproxy (instructions in PRIVACY.md)
 
 ## Contact
 
-If you have questions about this privacy policy, please open an issue on our [GitHub repository](https://github.com/MillerMedia/ElectionDeflection/issues).
+If you have questions about this privacy policy, please open an issue on our [GitHub repository](https://github.com/mattmillerai/ElectionDeflection/issues).

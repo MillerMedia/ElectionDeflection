@@ -32,7 +32,7 @@ build/
 .swiftpm/
 
 # Training data (JSON/model/txt files contain real message content)
-TrainingData/*.json
+TrainingData/*.local.json  # keep the versioned training_data_v*.json tracked; ignore local scratch
 TrainingData/*.mlmodel
 TrainingData/*.mlmodelc
 TrainingData/*.txt
@@ -56,3 +56,12 @@ node_modules/
 *.p12
 *.mobileprovision
 *.cer
+
+# Ruby/fastlane — resolve on the runner
+Gemfile.lock
+
+# Feedback pipeline — harvested user texts & Slack tokens must never be committed
+tools/feedback/*.jsonl
+tools/feedback/*_report.md
+slack_token
+*.slack_token

@@ -299,6 +299,7 @@ final class StoreKitService: ObservableObject {
                 case .verified(let transaction):
                     await transaction.finish()
                     await checkEntitlements()
+                    ReviewRequestManager.shared.recordPurchase()
                     logger.info("Purchase verified for \(productID, privacy: .private)")
                     return .success
                 case .unverified(_, _):

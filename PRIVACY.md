@@ -180,5 +180,5 @@ Use a network proxy to verify zero network requests during filtering:
 
 If you have questions about ElectionDeflection's privacy architecture, you can:
 
-- [Open an issue](https://github.com/MillerMedia/ElectionDeflection/issues) on GitHub
-- Review the [complete source code](https://github.com/MillerMedia/ElectionDeflection)
+- [Open an issue](https://github.com/mattmillerai/ElectionDeflection/issues) on GitHub
+- Review the [complete source code](https://github.com/mattmillerai/ElectionDeflection)

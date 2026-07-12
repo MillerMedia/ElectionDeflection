@@ -166,6 +166,10 @@ struct MainAppView: View {
             if newPhase == .active {
                 refreshData()
                 validateMLModel()
+                ReviewRequestManager.shared.recordLaunch()
+                evaluateReviewRequest()
+            } else if newPhase == .inactive {
+                ReviewRequestManager.shared.recordResignActive()
             }
         }
     }
@@ -175,6 +179,14 @@ struct MainAppView: View {
         SharedDataManager.shared.seedDefaultFilterDataIfNeeded()
         isMLAvailable = SharedDataManager.shared.isMLModelEnabled
         evaluateUpgradePrompt()
+    }
+
+    private func evaluateReviewRequest() {
+        // Small delay to let the UI settle before showing system alert
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            guard !showingProUpgrade, !showingSettings, !showingTextSubmission else { return }
+            _ = ReviewRequestManager.shared.requestReviewIfEligible()
+        }
     }
 
     private func evaluateUpgradePrompt() {

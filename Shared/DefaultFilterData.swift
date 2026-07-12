@@ -35,7 +35,13 @@ enum DefaultFilterData {
         "gop25", "gop24", "gop26", "gop27", "gop28", "gop29", "gop30", "gop31", "gop32", "gop33", "gop34", "gop35", "gop36", "gop37", "gop45", "gop47",
         "america first alliance", "redvt.cc", "saveusa", " gop's ", "djt", "DOGE", "D.O.G.E.", "gop1poll", "elise stefanik", "stefanik", "house majority", "epstein files", "speaker johnson", "fundnow", "fake news", "leftist", "eli crane", "democracyfirstpac", "white house", "situation room", "patriot consensus",
         "rep25", "rep26", "rep27", "rep28",
-        "susan collins", "jordan wood", "race against", "cory booker", "redtxt.vip", "mike lee", "chip roy", "tap2go", "tom homan", "ice agent", "clkgo", "tucker carlson", "preborn"
+        "susan collins", "jordan wood", "race against", "cory booker", "redtxt.vip", "mike lee", "chip roy", "tap2go", "tom homan", "ice agent", "clkgo", "tucker carlson", "preborn",
+        // 2026 cycle — from user-submission triage (tools/feedback). The 2024 short-domains
+        // above (gv/gop24) are stale; these are the rotating 2026 hosts seen in the wild.
+        "us-26.co", "win26.io", "usa26.io", "26u5a.co", "rght26.io", "win-red.io", "26-win.org", "right26.co", "rep2026.co",
+        // Spam opt-out obfuscation legit senders never use (they write "reply STOP"); "stop to end" is
+        // intentionally excluded — it collides with legitimate "reply STOP to end" language.
+        "stop=end"
     ]
 
     // MARK: - Whitelist Contexts (v1.0)

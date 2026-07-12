@@ -32,7 +32,7 @@ That's it. With "No" selected, Apple displays **"Data Not Collected"** on the Ap
 
 Enter the URL for `PRIVACY_POLICY.md`:
 
-- **Option A (GitHub raw):** `https://raw.githubusercontent.com/MillerMedia/ElectionDeflection/main/PRIVACY_POLICY.md`
+- **Option A (GitHub raw):** `https://raw.githubusercontent.com/mattmillerai/ElectionDeflection/main/PRIVACY_POLICY.md`
 - **Option B (GitHub Pages):** Configure GitHub Pages and use a cleaner URL
 - **Option C (External):** Host on developer website
 
